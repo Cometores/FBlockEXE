@@ -1,121 +1,46 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using Microsoft.Win32;
+﻿using System.Diagnostics;
 
-class Program
+namespace FBlockEXE;
+
+internal static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        if (args.Length > 0)
-        {
-            if (args[0] == "--register")
-            {
-                RegisterContextMenu();
-                return;
-            }
-            else if (args[0] == "--unregister")
-            {
-                UnregisterContextMenu();
-                return;
-            }
-        }
+        if (args.Length == 0) return;
 
-        if (args.Length == 0)
-        {
-            Console.WriteLine("Usage: BlockExeFirewall.exe <path_to_exe>");
+        if (args.Length > 0 && RegisterInContextMenu(args))
             return;
-        }
 
-        string exePath = args[0];
-        if (!File.Exists(exePath))
-        {
-            Console.WriteLine("File not found: " + exePath);
-            return;
-        }
-
-        string exeName = Path.GetFileNameWithoutExtension(exePath);
-        string ruleName = exeName + "_BLOCK";
-
-        AddFirewallRule(ruleName, exePath);
+        ProcessProgramFwRule(args);
     }
 
-    static void AddFirewallRule(string ruleName, string exePath)
+    private static void ProcessProgramFwRule(string[] args)
     {
-        string inboundRule = $"advfirewall firewall add rule name=\"{ruleName}\" dir=in action=block program=\"{exePath}\" enable=yes";
-        string outboundRule = $"advfirewall firewall add rule name=\"{ruleName}\" dir=out action=block program=\"{exePath}\" enable=yes";
+        string exeToBlockPath = args[0];
         
-        bool inboundSuccess = RunNetshCommand(inboundRule);
-        bool outboundSuccess = RunNetshCommand(outboundRule);
-        
-        if (inboundSuccess && outboundSuccess)
-        {
-            Console.WriteLine("Firewall rules added successfully for: " + exePath);
-        }
+        if (!File.Exists(exeToBlockPath)) return;
+
+        string version = FileVersionInfo.GetVersionInfo(exeToBlockPath).FileVersion ?? "unknown";
+        string ruleName = $"BLOCK_{Path.GetFileNameWithoutExtension(exeToBlockPath)}_{version}";
+
+        if (FirewallManager.IsRuleExists(ruleName))
+            FirewallManager.RemoveRule(ruleName);
         else
-        {
-            Console.WriteLine("Failed to add firewall rules. Try running as Administrator.");
-        }
+            FirewallManager.AddRule(ruleName, exeToBlockPath);
     }
 
-    static bool RunNetshCommand(string arguments)
+    private static bool RegisterInContextMenu(string[] args)
     {
-        try
+        switch (args[0])
         {
-            ProcessStartInfo psi = new ProcessStartInfo("netsh", arguments)
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            
-            using (Process process = Process.Start(psi))
-            {
-                string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-                process.WaitForExit();
-                
-                if (!string.IsNullOrWhiteSpace(output)) Console.WriteLine("Output: " + output);
-                if (!string.IsNullOrWhiteSpace(error)) Console.WriteLine("Error: " + error);
-                
-                return process.ExitCode == 0;
-            }
+            case "--register":
+                ContextMenuManager.Register();
+                return true;
+            case "--unregister":
+                ContextMenuManager.Unregister();
+                return true;
+            default:
+                return false;
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Exception while running netsh: " + ex.Message);
-            return false;
-        }
-    }
-
-    static void RegisterContextMenu()
-    {
-        string exePath = Process.GetCurrentProcess().MainModule.FileName;
-        string command = $"powershell -Command \"Start-Process -FilePath '{exePath}' -ArgumentList '%1' -Verb RunAs\"";
-        string iconPath = exePath;
-        
-        using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"exefile\shell\Block Connection in Firewall"))
-        {
-            if (key != null)
-            {
-                key.SetValue("Icon", iconPath);
-            }
-        }
-
-        using (RegistryKey key = Registry.ClassesRoot.CreateSubKey(@"exefile\shell\Block Connection in Firewall\command"))
-        {
-            if (key != null)
-            {
-                key.SetValue("", command);
-                Console.WriteLine("Context menu registered successfully with icon and admin rights.");
-            }
-        }
-    }
-
-    static void UnregisterContextMenu()
-    {
-        Registry.ClassesRoot.DeleteSubKeyTree(@"exefile\shell\Block Connection in Firewall", false);
-        Console.WriteLine("Context menu unregistered successfully.");
     }
 }
