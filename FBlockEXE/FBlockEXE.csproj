@@ -2,9 +2,17 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net472</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+        <ApplicationIcon>..\Setup\SetupFiles\Icon.ico</ApplicationIcon>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\Setup\SetupFiles\Icon.ico">
+        <Link>Icon.ico</Link>
+      </None>
+    </ItemGroup>
 
 </Project>
