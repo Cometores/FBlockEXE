@@ -1,0 +1,36 @@
+name: Release MSI
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+      - name: Restore
+        run: msbuild FBlockEXE.sln /t:Restore /p:Configuration=Release
+      - name: Build app
+        run: msbuild FBlockEXE.sln /p:Configuration=Release
+      - name: Build Setup (vdproj)
+        run: msbuild path\to\YourSetupProject.vdproj /p:Configuration=Release
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: msi
+          path: path\to\Release\FBlockEXE-*.msi
+
+  publish:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: msi
+          path: dist
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist\FBlockEXE-*.msi

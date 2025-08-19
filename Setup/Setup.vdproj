@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_89642EE3668841B789F5C758174C073F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F2F5C1C0055E494DA1477C7CDC1ED18C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -146,6 +152,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89642EE3668841B789F5C758174C073F"
+            {
+            "SourcePath" = "8:SetupFiles\\block.ico"
+            "TargetName" = "8:block.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D09B8A262AB349028E8818DADD325C1A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2F5C1C0055E494DA1477C7CDC1ED18C"
             {
             "SourcePath" = "8:SetupFiles\\Icon.ico"
@@ -240,7 +266,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_F2F5C1C0055E494DA1477C7CDC1ED18C"
+        "ARPPRODUCTICON" = "8:_89642EE3668841B789F5C758174C073F"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
