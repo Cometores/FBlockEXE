@@ -1,11 +1,12 @@
 name: Release MSI
 on:
+  workflow_dispatch:
   push:
-    tags: [ 'v*' ]
+    tags: ['v*']
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
       - name: Setup MSBuild
@@ -15,7 +16,7 @@ jobs:
       - name: Build app
         run: msbuild FBlockEXE.sln /p:Configuration=Release
       - name: Build Setup (vdproj)
-        run: msbuild path\to\YourSetupProject.vdproj /p:Configuration=Release
+        run: msbuild Setup/Setup.vdproj /p:Configuration=Release
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
