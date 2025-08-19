@@ -5,7 +5,7 @@ namespace FBlockEXE;
 
 /// <summary>
 /// Manages context menu integration for a FBlockEXE.
-/// Registers program in registry as a powershell script.
+/// Saves program in windows registry as a powershell script.
 /// </summary>
 public static class ContextMenuManager
 {

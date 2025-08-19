@@ -21,20 +21,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D505E3C9ED37480C9BB8013BF7D17265"
+        "MsmKey" = "8:_8019618C20E341B9902EBF340F778725"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F45C720A72AA4D96AED328A910474468"
+        "MsmKey" = "8:_F2F5C1C0055E494DA1477C7CDC1ED18C"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F45C720A72AA4D96AED328A910474468"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -109,34 +103,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_1B59D23C07B54411A791D048EE4AF796"
-            {
-            "Name" = "8:SetupLib.dll"
-            "Condition" = "8:"
-            "Object" = "8:_F45C720A72AA4D96AED328A910474468"
-            "FileType" = "3:1"
-            "InstallAction" = "3:4"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_25AC408E_DD34_4726_A7DB_3D5861138629"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A216EFFE713F4521B30863B3AF3CD433"
-            {
-            "Name" = "8:SetupLib.dll"
-            "Condition" = "8:"
-            "Object" = "8:_F45C720A72AA4D96AED328A910474468"
-            "FileType" = "3:1"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_4E1E45D5_210E_40CF_906D_6653F1423D26"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
         }
         "DefaultFeature"
         {
@@ -180,41 +146,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D505E3C9ED37480C9BB8013BF7D17265"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F2F5C1C0055E494DA1477C7CDC1ED18C"
             {
             "SourcePath" = "8:SetupFiles\\Icon.ico"
             "TargetName" = "8:Icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_D09B8A262AB349028E8818DADD325C1A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F45C720A72AA4D96AED328A910474468"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SetupLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F45C720A72AA4D96AED328A910474468"
-                    {
-                    "Name" = "8:SetupLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:SetupFiles\\SetupLib.dll"
-            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D09B8A262AB349028E8818DADD325C1A"
             "Condition" = "8:"
@@ -287,14 +222,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FBlockEXE"
-        "ProductCode" = "8:{EDB7D4BC-1D8D-4106-B8C3-AB8D87AB007C}"
-        "PackageCode" = "8:{51552711-CFCD-4A73-BEE8-6B80E7283E97}"
-        "UpgradeCode" = "8:{645053D0-93BD-48A0-A3E3-2F53B947C195}"
+        "ProductCode" = "8:{DDE8172D-CC95-42B9-93C9-D204D404AB66}"
+        "PackageCode" = "8:{EDE45484-F0AB-432D-9C1E-22704033E730}"
+        "UpgradeCode" = "8:{1A08DFE7-CEF7-42E0-B3C6-55B7B31D644E}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Cringe Banana Shit"
         "ARPHELPTELEPHONE" = "8:"
@@ -305,7 +240,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_D505E3C9ED37480C9BB8013BF7D17265"
+        "ARPPRODUCTICON" = "8:_F2F5C1C0055E494DA1477C7CDC1ED18C"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -329,15 +264,87 @@
                     "Transitive" = "11:FALSE"
                         "Keys"
                         {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_2247D55A40E94D2A8780247B54138620"
+                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_D2D68CB8811B45079EC4A166F9570343"
                             {
-                            "Name" = "8:[Manufacturer]"
+                            "Name" = "8:Classes"
                             "Condition" = "8:"
                             "AlwaysCreate" = "11:FALSE"
                             "DeleteAtUninstall" = "11:FALSE"
                             "Transitive" = "11:FALSE"
                                 "Keys"
                                 {
+                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4239B181E0DF49309085F3A82443929E"
+                                    {
+                                    "Name" = "8:exefile"
+                                    "Condition" = "8:"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "DeleteAtUninstall" = "11:FALSE"
+                                    "Transitive" = "11:FALSE"
+                                        "Keys"
+                                        {
+                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_6B7D5F26A17E4114BB251EAA4DDF0406"
+                                            {
+                                            "Name" = "8:shell"
+                                            "Condition" = "8:"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "DeleteAtUninstall" = "11:FALSE"
+                                            "Transitive" = "11:FALSE"
+                                                "Keys"
+                                                {
+                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_D547274E99184C068D35250FA2403163"
+                                                    {
+                                                    "Name" = "8:Block-Unblock Connection in Firewall"
+                                                    "Condition" = "8:"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "DeleteAtUninstall" = "11:FALSE"
+                                                    "Transitive" = "11:FALSE"
+                                                        "Keys"
+                                                        {
+                                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4BE61A8F7F21490C8C321C97B0D0FB0B"
+                                                            {
+                                                            "Name" = "8:command"
+                                                            "Condition" = "8:"
+                                                            "AlwaysCreate" = "11:FALSE"
+                                                            "DeleteAtUninstall" = "11:FALSE"
+                                                            "Transitive" = "11:FALSE"
+                                                                "Keys"
+                                                                {
+                                                                }
+                                                                "Values"
+                                                                {
+                                                                    "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_DE01033498764BFDA0CB1637D8D2A61E"
+                                                                    {
+                                                                    "Name" = "8:"
+                                                                    "Condition" = "8:"
+                                                                    "Transitive" = "11:FALSE"
+                                                                    "ValueTypes" = "3:1"
+                                                                    "Value" = "8:\"[TARGETDIR]FBlockEXE.exe\" \"%1\""
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        "Values"
+                                                        {
+                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_B02294DCDC624B7DBB3DEE3244D35E7D"
+                                                            {
+                                                            "Name" = "8:icon"
+                                                            "Condition" = "8:"
+                                                            "Transitive" = "11:FALSE"
+                                                            "ValueTypes" = "3:1"
+                                                            "Value" = "8:\"[TARGETDIR]FBlockEXE.exe\",0\n"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                "Values"
+                                                {
+                                                }
+                                            }
+                                        }
+                                        "Values"
+                                        {
+                                        }
+                                    }
                                 }
                                 "Values"
                                 {
@@ -408,20 +415,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E796DC96D1A146CBAE9F06B01356C8C3"
-            {
-            "Name" = "8:FBlockEXE"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_D505E3C9ED37480C9BB8013BF7D17265"
-            "Folder" = "8:_D09B8A262AB349028E8818DADD325C1A"
-            "WorkingFolder" = "8:_D09B8A262AB349028E8818DADD325C1A"
-            "Icon" = "8:_D505E3C9ED37480C9BB8013BF7D17265"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -718,9 +711,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_667A13CB0C4847FCB4E34C9FC6BE498D"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8019618C20E341B9902EBF340F778725"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\FBlockEXE\\obj\\Release\\net472\\FBlockEXE.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D09B8A262AB349028E8818DADD325C1A"
@@ -738,8 +731,8 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{3B22F6A0-0E69-4A22-9423-623676927DF1}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
