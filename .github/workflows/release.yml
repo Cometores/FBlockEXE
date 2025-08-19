@@ -4,24 +4,53 @@ on:
   push:
     tags: ['v*']
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v2
-      - name: Restore
-        run: msbuild FBlockEXE.sln /t:Restore /p:Configuration=Release
-      - name: Build app
-        run: msbuild FBlockEXE.sln /p:Configuration=Release
+
+      - name: Download Installer Projects VSIX
+        shell: bash
+        run: |
+          curl -L -o InstallerProjects2022.vsix \
+            "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VisualStudioClient/vsextensions/MicrosoftVisualStudio2022InstallerProjects/latest/vspackage"
+
+      - name: Resolve Visual Studio paths
+        shell: pwsh
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" `
+                  -latest -products * -property installationPath
+          if (-not $vs) { throw "Visual Studio 2022 not found" }
+          "DEVENV=$vs\Common7\IDE\devenv.com"      | Out-File -Append $env:GITHUB_ENV
+          "VSIX=$vs\Common7\IDE\VSIXInstaller.exe" | Out-File -Append $env:GITHUB_ENV
+
+      - name: Install VSIX
+        shell: cmd
+        run: |
+          "%VSIX%" /quiet InstallerProjects2022.vsix
+
+      - name: Restore NuGet
+        run: dotnet restore "${{ github.workspace }}\FBlockEXE.sln"
+
       - name: Build Setup (vdproj)
-        run: msbuild Setup/Setup.vdproj /p:Configuration=Release
+        shell: cmd
+        run: |
+          "%DEVENV%" "${{ github.workspace }}\FBlockEXE.sln" ^
+            /project "Setup\Setup.vdproj" ^
+            /projectconfig "Release" ^
+            /build "Release"
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: msi
-          path: path\to\Release\FBlockEXE-*.msi
+          name: setup
+          path: |
+            Setup\Release\*.msi
+            Setup\Release\*.exe
 
   publish:
     needs: build
@@ -29,9 +58,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: msi
+          name: setup
           path: dist
-      - name: Create release
+
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist\FBlockEXE-*.msi
+          files: |
+            dist\*.msi
+            dist\*.exe
